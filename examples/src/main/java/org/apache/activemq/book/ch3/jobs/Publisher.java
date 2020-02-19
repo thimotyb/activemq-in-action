@@ -40,7 +40,10 @@ public class Publisher {
     }    
     
 	public static void main(String[] args) throws JMSException {
-    	Publisher publisher = new Publisher();
+        String param = args[0];
+        if (param!=null) brokerURL = param;
+        System.out.println("**** brokerUrl: "+brokerURL);
+	Publisher publisher = new Publisher();
         while (total < 1000) {
             for (int i = 0; i < count; i++) {
                 publisher.sendMessage();

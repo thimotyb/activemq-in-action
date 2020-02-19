@@ -32,6 +32,9 @@ public class Consumer {
     }    
     
     public static void main(String[] args) throws JMSException {
+        String param = args[0];
+        if (param!=null) brokerURL = param;
+        System.out.println("**** brokerUrl "+brokerURL);
     	Consumer consumer = new Consumer();
     	for (String job : consumer.jobs) {
     		Destination destination = consumer.getSession().createQueue("JOBS." + job);
